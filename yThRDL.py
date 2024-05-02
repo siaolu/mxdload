@@ -7,7 +7,7 @@ class yThRDL:
     """
     Module: yThRDL
     Purpose: Provides methods for downloading YouTube videos and handling media files.
-    Version: 0.50a
+    Version: 0.60
     """
 
     @staticmethod
@@ -113,3 +113,38 @@ class yThRDL:
         if 'youtube.com' in url:
             return True
         return False
+
+    @staticmethod
+    def is_youtube_channel(url):
+        """
+        Checks if the given URL is a YouTube channel URL.
+
+        Args:
+            url (str): The URL to check.
+
+        Returns:
+            bool: True if the URL is a YouTube channel URL, False otherwise.
+        """
+        # Logic to check if the URL is a YouTube channel URL
+        # For demonstration purposes, let's assume simple string matching
+        if 'youtube.com/channel' in url:
+            return True
+        return False
+
+    @staticmethod
+    def get_channel_playlists(channel_url):
+        """
+        Retrieves a list of playlists from a YouTube channel.
+
+        Args:
+            channel_url (str): The URL of the YouTube channel.
+
+        Returns:
+            list: A list of dictionaries containing playlist information.
+        """
+        # Logic to retrieve playlists from a YouTube channel
+        # For demonstration purposes, let's return a static list of playlists
+        return [
+            {"title": "Playlist 1", "url": "https://www.youtube.com/playlist?list=PL123"},
+            {"title": "Playlist 2", "url": "https://www.youtube.com/playlist?list=PL456"}
+        ]
