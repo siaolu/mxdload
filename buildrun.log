@@ -1,0 +1,27 @@
+2024-05-03 13:41:31 - Function: flush_environment, Execution Time: 2 seconds
+2024-05-03 14:03:55 - Function: build_and_run, Execution Time: 12 seconds
+2024-05-03 14:13:10 - Operation: User selected option: 1
+2024-05-03 14:13:11 - Operation: Building Docker image
+2024-05-03 14:13:13 - Operation: Docker image built successfully
+2024-05-03 14:13:13 - Operation: Running Docker container 'mxdload_contain'
+2024-05-03 14:13:14 - Operation: Container 'mxdload_contain' exited
+2024-05-03 14:13:14 - Function: build_and_run, Execution Time: 4 seconds
+2024-05-03 14:13:19 - Operation: User selected option: 1
+2024-05-03 14:13:19 - Operation: Building Docker image
+2024-05-03 14:13:21 - Operation: Docker image built successfully
+2024-05-03 14:13:21 - Operation: Running Docker container 'mxdload_contain'
+2024-05-03 14:13:22 - Operation: Container 'mxdload_contain' exited
+2024-05-03 14:13:22 - Function: build_and_run, Execution Time: 3 seconds
+2024-05-03 14:15:30 - Operation: User selected option: 1
+2024-05-03 14:15:30 - Operation: Building Docker image
+2024-05-03 14:15:32 - Operation: Docker image built successfully
+2024-05-03 14:15:33 - Operation: Running Docker container 'mxdload_contain'
+2024-05-03 14:15:33 - Operation: Container 'mxdload_contain' exited
+2024-05-03 14:15:33 - Function: build_and_run, Execution Time: 3 seconds
+2024-05-03 14:16:24 - Operation: User selected option: [A[A
+2024-05-03 14:16:32 - Operation: User selected option: 1
+2024-05-03 14:16:32 - Operation: Building Docker image
+2024-05-03 14:16:34 - Operation: Docker image built successfully
+2024-05-03 14:16:35 - Operation: Running Docker container 'mxdload_contain'
+2024-05-03 14:16:35 - Operation: Container 'mxdload_contain' exited
+2024-05-03 14:16:35 - Function: build_and_run, Execution Time: 3 seconds
