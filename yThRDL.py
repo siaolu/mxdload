@@ -1,3 +1,7 @@
+"""
+module: yThRDL.py 
+# 
+"""
 import os
 import requests
 from urllib.parse import urlparse
@@ -22,12 +26,20 @@ class yThRDL:
         Returns:
             None
         """
-        yt = YouTube(url)
-        if resolution == 'highest':
-            stream = yt.streams.get_highest_resolution()
-        else:
-            stream = yt.streams.filter(res=resolution).first()
-        stream.download()
+        try:
+            yt = YouTube(url)
+            if resolution == 'highest':
+                stream = yt.streams.get_highest_resolution()
+            else:
+                stream = yt.streams.filter(res=resolution).first()
+
+            if stream:
+                stream.download()
+                print(f"YouTube video downloaded successfully from {url}")
+            else:
+                print(f"No video stream found for the specified resolution: {resolution}")
+        except Exception as e:
+            print(f"Error occurred while downloading YouTube video: {str(e)}")
 
     @staticmethod
     def download_playlist(playlist_url, download_location='./'):
@@ -41,9 +53,13 @@ class yThRDL:
         Returns:
             None
         """
-        playlist = Playlist(playlist_url)
-        for video in playlist.video_urls:
-            yThRDL.download_youtube_video(video, download_location)
+        try:
+            playlist = Playlist(playlist_url)
+            for video_url in playlist.video_urls:
+                yThRDL.download_youtube_video(video_url, download_location)
+            print(f"YouTube playlist downloaded successfully from {playlist_url}")
+        except Exception as e:
+            print(f"Error occurred while downloading YouTube playlist: {str(e)}")
 
     @staticmethod
     def download_media_file(url, file_type, download_location='./'):
@@ -58,10 +74,20 @@ class yThRDL:
         Returns:
             None
         """
-        response = requests.get(url)
-        file_extension = yThRDL.get_file_extension(url)
-        file_path = os.path.join(download_location, f"downloaded_file.{file_extension}")
-        yThRDL.save_file(file_path, response.content)
+        try:
+            response = requests.get(url)
+            response.raise_for_status()  # Raise an exception for 4xx or 5xx status codes
+
+            file_extension = yThRDL.get_file_extension(url)
+            file_name = f"downloaded_file_{file_type}.{file_extension}"
+            file_path = os.path.join(download_location, file_name)
+
+            yThRDL.save_file(file_path, response.content)
+            print(f"Media file downloaded successfully from {url}")
+        except requests.exceptions.RequestException as e:
+            print(f"Error occurred while downloading media file: {str(e)}")
+        except Exception as e:
+            print(f"An unexpected error occurred while downloading media file: {str(e)}")
 
     @staticmethod
     def get_file_extension(url):
@@ -76,11 +102,8 @@ class yThRDL:
         """
         parsed_url = urlparse(url)
         path = parsed_url.path
-        if '.' in path:
-            extension = path.split('.')[-1]
-        else:
-            extension = 'binary'
-        return extension
+        extension = os.path.splitext(path)[1].lstrip('.')
+        return extension if extension else 'unknown'
 
     @staticmethod
     def save_file(file_path, content):
@@ -94,57 +117,9 @@ class yThRDL:
         Returns:
             None
         """
-        with open(file_path, 'wb') as file:
-            file.write(content)
-
-    @staticmethod
-    def is_youtube_url(url):
-        """
-        Checks if the given URL is a YouTube video URL.
-
-        Args:
-            url (str): The URL to check.
-
-        Returns:
-            bool: True if the URL is a YouTube video URL, False otherwise.
-        """
-        # Logic to check if the URL is a YouTube video URL
-        # For demonstration purposes, let's assume simple string matching
-        if 'youtube.com' in url:
-            return True
-        return False
-
-    @staticmethod
-    def is_youtube_channel(url):
-        """
-        Checks if the given URL is a YouTube channel URL.
-
-        Args:
-            url (str): The URL to check.
-
-        Returns:
-            bool: True if the URL is a YouTube channel URL, False otherwise.
-        """
-        # Logic to check if the URL is a YouTube channel URL
-        # For demonstration purposes, let's assume simple string matching
-        if 'youtube.com/channel' in url:
-            return True
-        return False
-
-    @staticmethod
-    def get_channel_playlists(channel_url):
-        """
-        Retrieves a list of playlists from a YouTube channel.
-
-        Args:
-            channel_url (str): The URL of the YouTube channel.
-
-        Returns:
-            list: A list of dictionaries containing playlist information.
-        """
-        # Logic to retrieve playlists from a YouTube channel
-        # For demonstration purposes, let's return a static list of playlists
-        return [
-            {"title": "Playlist 1", "url": "https://www.youtube.com/playlist?list=PL123"},
-            {"title": "Playlist 2", "url": "https://www.youtube.com/playlist?list=PL456"}
-        ]
+        try:
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            with open(file_path, 'wb') as file:
+                file.write(content)
+        except IOError as e:
+            print(f"Error occurred while saving file: {str(e)}")
