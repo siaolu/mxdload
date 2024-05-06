@@ -1,17 +1,17 @@
 """
-module: yThRDL.py 
-# 
+module: youtube_downloader.py
+version: 0.61
 """
 import os
 import requests
 from urllib.parse import urlparse
 from pytube import YouTube, Playlist
 
-class yThRDL:
+class YouTubeDownloader:
     """
-    Module: yThRDL
+    Module: YouTubeDownloader
     Purpose: Provides methods for downloading YouTube videos and handling media files.
-    Version: 0.60
+    Version: 0.61
     """
 
     @staticmethod
@@ -56,7 +56,7 @@ class yThRDL:
         try:
             playlist = Playlist(playlist_url)
             for video_url in playlist.video_urls:
-                yThRDL.download_youtube_video(video_url, download_location)
+                YouTubeDownloader.download_youtube_video(video_url, download_location)
             print(f"YouTube playlist downloaded successfully from {playlist_url}")
         except Exception as e:
             print(f"Error occurred while downloading YouTube playlist: {str(e)}")
@@ -78,11 +78,11 @@ class yThRDL:
             response = requests.get(url)
             response.raise_for_status()  # Raise an exception for 4xx or 5xx status codes
 
-            file_extension = yThRDL.get_file_extension(url)
+            file_extension = YouTubeDownloader.get_file_extension(url)
             file_name = f"downloaded_file_{file_type}.{file_extension}"
             file_path = os.path.join(download_location, file_name)
 
-            yThRDL.save_file(file_path, response.content)
+            YouTubeDownloader.save_file(file_path, response.content)
             print(f"Media file downloaded successfully from {url}")
         except requests.exceptions.RequestException as e:
             print(f"Error occurred while downloading media file: {str(e)}")

@@ -1,10 +1,7 @@
+""" module: media_downloader.py
+    version: 1.1
 """
-module: media_xfops.py 
- 
-"""
-
-
-from yThRDL import yThRDL
+from youtube_downloader import yThRDL
 
 def download_youtube_video():
     """

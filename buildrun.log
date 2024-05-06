@@ -25,3 +25,21 @@
 2024-05-03 14:16:35 - Operation: Running Docker container 'mxdload_contain'
 2024-05-03 14:16:35 - Operation: Container 'mxdload_contain' exited
 2024-05-03 14:16:35 - Function: build_and_run, Execution Time: 3 seconds
+2024-05-03 15:37:33 - Operation: User selected option: 1
+2024-05-03 15:37:33 - Operation: Building Docker image
+2024-05-03 15:37:45 - Operation: Docker image built successfully
+2024-05-03 15:37:45 - Operation: Running Docker container 'mxdload_contain'
+2024-05-03 15:37:46 - Operation: Container 'mxdload_contain' exited
+2024-05-03 15:37:46 - Function: build_and_run, Execution Time: 13 seconds
+2024-05-03 15:45:06 - Operation: User selected option: 1
+2024-05-03 15:45:06 - Operation: Building Docker image
+2024-05-03 15:45:11 - Operation: Docker image built successfully
+2024-05-03 15:45:15 - Operation: Running Docker container 'mxdload_contain'
+2024-05-03 15:45:17 - Operation: Container 'mxdload_contain' exited
+2024-05-03 15:45:18 - Function: build_and_run, Execution Time: 12 seconds
+2024-05-03 16:40:57 - Operation: User selected option: 1
+2024-05-03 16:40:57 - Operation: Building Docker image
+2024-05-03 16:41:06 - Operation: Docker image built successfully
+2024-05-03 16:41:08 - Operation: Running Docker container 'mxdload_contain'
+2024-05-03 16:41:09 - Operation: Container 'mxdload_contain' exited
+2024-05-03 16:41:09 - Function: build_and_run, Execution Time: 12 seconds

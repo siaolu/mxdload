@@ -1,16 +1,17 @@
 # Dockerfile
-# Version 0.51
+# Version 0.52
 
 FROM python:3.9
-
 WORKDIR /app
 
 # Copy Python script modules
-COPY yThRDL.py /app/yThRDL.py
-COPY media_info.py /app/media_info.py
-COPY main.py /app/main.py
+COPY youtube_downloader.py /app/youtube_downloader.py
+COPY webpage_media_extractor.py /app/webpage_media_extractor.py
+COPY youtube_url_processor.py /app/youtube_url_processor.py
+COPY media_downloader.py /app/media_downloader.py
+COPY mxdload_main.py /app/mxdload_main.py
 
 # Install dependencies
-RUN pip install pytube requests
+RUN pip install pytube requests beautifulsoup4
 
-CMD ["python", "main.py"]
+CMD ["python", "mxdload_main.py"]
